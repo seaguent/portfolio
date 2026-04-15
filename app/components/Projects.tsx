@@ -6,154 +6,121 @@ import { motion, useInView } from "framer-motion";
 const projects = [
   {
     num: "01",
-    type: "Full Stack · Vision AI · Web App",
     name: "AI Meal Estimator",
-    desc: "An AI-powered web application that estimates calories and macronutrients from food photos. Upload an image or use your camera — Google Gemini Vision analyzes the meal and returns a detailed nutritional breakdown in real time.",
-    stack: [
-      "Python",
-      "FastAPI",
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "Gemini Vision API",
-      "Render",
-      "Vercel",
-      "GitHub Actions",
-    ],
+    tagline: "Snap a photo. Get your macros.",
+    desc: "Full-stack web app that estimates calories and macronutrients from food photos using Google Gemini Vision. FastAPI backend with Pydantic validation, React + Tailwind frontend with drag-and-drop and live camera capture. Fully deployed with automated CI/CD.",
+    stack: ["Python", "FastAPI", "React", "Tailwind CSS", "Gemini Vision API", "Render", "Vercel", "GitHub Actions"],
     github: "https://github.com/seaguent/ai-meal-estimator",
     demo: null,
+    type: "Full Stack · AI · Web App",
   },
 ];
 
 export default function Projects() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section id="projects" ref={ref} className="max-w-6xl mx-auto px-12 py-28">
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="font-[family-name:var(--font-dm-mono)] text-[0.7rem] uppercase tracking-[0.25em] mb-3 flex items-center gap-4"
-        style={{ color: "var(--accent)" }}
-      >
-        03 — Projects
-        <span className="block h-px w-16" style={{ background: "var(--border)" }} />
-      </motion.p>
+    <section id="projects" ref={ref} style={{ position: "relative", overflow: "hidden" }}>
+      <div className="section-wrapper">
+        {/* Three-point arc — court element */}
+        <svg aria-hidden style={{ position: "absolute", top: 0, left: "-60px", opacity: 0.05, pointerEvents: "none" }} width="300" height="100%" viewBox="0 0 300 600" preserveAspectRatio="xMidYMid slice">
+          <path d="M 60,20 L 60,580" stroke="white" strokeWidth="1.5" fill="none"/>
+          <path d="M 60,80 A 220,220 0 0,1 60,520" stroke="white" strokeWidth="2" fill="none"/>
+          <line x1="0" y1="80" x2="65" y2="80" stroke="white" strokeWidth="1.5"/>
+          <line x1="0" y1="520" x2="65" y2="520" stroke="white" strokeWidth="1.5"/>
+        </svg>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }}
+          className="section-label"
+        >
+          02 — Projects
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.07 }}
+          className="section-title"
+        >
+          Things I&apos;ve <span>shipped.</span>
+        </motion.h2>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.55, delay: 0.1 }}
-        className="font-[family-name:var(--font-bebas)] mb-12"
-        style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", letterSpacing: "0.04em" }}
-      >
-        Things I&apos;ve Built
-      </motion.h2>
-
-      <div className="flex flex-col gap-5">
-        {projects.map((p, i) => (
-          <motion.div
-            key={p.num}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.55, delay: 0.2 + i * 0.1 }}
-            className="group relative p-10 rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(200,255,0,0.25)]"
-            style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-          >
-            {/* Big number watermark */}
-            <div
-              className="absolute top-4 right-6 font-[family-name:var(--font-bebas)] pointer-events-none select-none transition-all duration-300 group-hover:opacity-20"
-              style={{
-                fontSize: "7rem",
-                lineHeight: 1,
-                color: "rgba(200,255,0,0.07)",
-              }}
+        <div className="grid gap-5">
+          {projects.map((p, i) => (
+            <motion.div
+              key={p.num}
+              initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.55, delay: 0.14 + i * 0.09 }}
+              className="rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(75,156,211,0.4)] relative"
+              style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
             >
-              {p.num}
-            </div>
-
-            {/* Gradient overlay */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(200,255,0,0.025) 0%, transparent 60%)",
-              }}
-            />
-
-            <div className="relative">
-              <p
-                className="font-[family-name:var(--font-dm-mono)] text-[0.68rem] uppercase tracking-[0.2em] mb-3"
-                style={{ color: "var(--accent)" }}
+              <svg aria-hidden style={{ position: "absolute", bottom: "-14px", right: "-14px", opacity: 0.07, pointerEvents: "none" }} width="80" height="80" viewBox="0 0 80 80">
+                <path d="M 66,0 A 56,56 0 0,1 66,80" stroke="white" strokeWidth="1.5" fill="none"/>
+                <line x1="0" y1="40" x2="60" y2="40" stroke="white" strokeWidth="1"/>
+                <circle cx="20" cy="40" r="14" stroke="white" strokeWidth="1" fill="none"/>
+              </svg>
+              {/* Card header bar */}
+              <div className="flex items-center justify-between px-7 py-4"
+                style={{ borderBottom: "1px solid var(--border)", background: "rgba(75,156,211,0.04)" }}
               >
-                {p.type}
-              </p>
-              <h3
-                className="font-[family-name:var(--font-bebas)] mb-3"
-                style={{
-                  fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
-                  letterSpacing: "0.04em",
-                }}
-              >
-                {p.name}
-              </h3>
-              <p
-                className="text-[0.9rem] leading-[1.8] font-light mb-6 max-w-2xl"
-                style={{ color: "rgba(240,242,255,0.6)" }}
-              >
-                {p.desc}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {p.stack.map((t) => (
-                  <span
-                    key={t}
-                    className="font-[family-name:var(--font-dm-mono)] text-[0.68rem] px-2.5 py-1 rounded-sm"
-                    style={{
-                      color: "var(--accent2)",
-                      background: "rgba(0,229,255,0.06)",
-                      border: "1px solid rgba(0,229,255,0.15)",
-                    }}
-                  >
-                    {t}
+                <div className="flex items-center gap-3">
+                  <span className="font-[family-name:var(--font-archivo)] font-black text-3xl leading-none"
+                    style={{ color: "rgba(75,156,211,0.18)" }}>
+                    {p.num}
                   </span>
-                ))}
+                  <span className="section-label" style={{ marginBottom: 0 }}>{p.type}</span>
+                </div>
+                <div className="flex gap-2">
+                  {[0.35, 0.22, 0.12].map((op, j) => (
+                    <div key={j} className="w-2.5 h-2.5 rounded-full" style={{ background: `rgba(75,156,211,${op})` }} />
+                  ))}
+                </div>
               </div>
-              <div className="flex gap-3">
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-dm-mono)] text-[0.72rem] uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-200 hover:bg-transparent hover:text-[var(--accent)]"
-                  style={{
-                    background: "var(--accent)",
-                    color: "#090B13",
-                    border: "1px solid var(--accent)",
-                    fontWeight: 500,
-                  }}
-                >
-                  ↗ GitHub
-                </a>
-                {p.demo && (
-                  <a
-                    href={p.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-[family-name:var(--font-dm-mono)] text-[0.72rem] uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-200 hover:border-[var(--muted)] hover:text-[var(--text)]"
-                    style={{
-                      background: "transparent",
-                      color: "var(--muted)",
-                      border: "1px solid var(--border)",
-                    }}
-                  >
-                    ↗ Live Demo
+
+              <div className="p-7">
+                <h3 className="font-[family-name:var(--font-archivo)] font-black text-2xl mb-1">{p.name}</h3>
+                <p className="text-sm font-semibold mb-4" style={{ color: "var(--carolina)" }}>{p.tagline}</p>
+                <p className="text-sm leading-[1.85] font-light mb-6 max-w-2xl"
+                  style={{ color: "rgba(238,242,247,0.6)" }}>{p.desc}</p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {p.stack.map((t) => (
+                    <span key={t} className="text-xs px-2.5 py-1 rounded-md"
+                      style={{ fontFamily: "var(--font-dm-mono)", color: "var(--carolina-light)", background: "rgba(75,156,211,0.1)", border: "1px solid rgba(75,156,211,0.2)" }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3">
+                  <a href={p.github} target="_blank" rel="noopener noreferrer"
+                    className="text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 hover:opacity-85"
+                    style={{ background: "var(--carolina)", color: "var(--navy)" }}>
+                    View on GitHub ↗
                   </a>
-                )}
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noopener noreferrer"
+                      className="text-sm font-medium px-5 py-2.5 rounded-lg transition-all duration-200 hover:border-[var(--carolina)] hover:text-[var(--carolina)]"
+                      style={{ color: "var(--muted)", border: "1px solid var(--border)", background: "transparent" }}>
+                      Live Demo ↗
+                    </a>
+                  )}
+                </div>
               </div>
+            </motion.div>
+          ))}
+
+          {/* Coming soon */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.28 }}
+            className="rounded-xl flex items-center justify-center py-10 px-8 text-center"
+            style={{ border: "1px dashed rgba(75,156,211,0.2)" }}
+          >
+            <div>
+              <p className="font-[family-name:var(--font-archivo)] font-black text-lg mb-1" style={{ color: "rgba(75,156,211,0.3)" }}>
+                More Coming Soon
+              </p>
+              <p className="text-sm" style={{ color: "var(--muted)" }}>Hackathon projects loading...</p>
             </div>
           </motion.div>
-        ))}
+        </div>
       </div>
     </section>
   );

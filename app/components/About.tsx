@@ -3,122 +3,86 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const stats = [
-  { num: "3.69", label: "GPA at UNC" },
-  { num: "1st", label: "Valedictorian" },
-  { num: "3×", label: "Dean's List" },
-  { num: "4", label: "Orgs & Clubs" },
+const skills = [
+  { title: "Languages", items: ["Python", "JavaScript", "Java", "SQL", "Elixir"] },
+  { title: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Vite"] },
+  { title: "Backend", items: ["FastAPI", "Node.js", "Pydantic", "REST APIs"] },
+  { title: "Tools", items: ["Git", "GitHub Actions", "Vercel", "Render", "CI/CD"] },
 ];
+
+const orgs = ["AI @ UNC", "Leaders in Entrepreneurship", "UNC Consulting Club", "Club Flag Football"];
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  const fade = (delay = 0) => ({
+    initial: { opacity: 0, y: 20 },
+    animate: inView ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number], delay },
+  });
 
   return (
-    <section id="about" ref={ref} className="max-w-6xl mx-auto px-12 py-28">
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="font-[family-name:var(--font-dm-mono)] text-[0.7rem] uppercase tracking-[0.25em] mb-3 flex items-center gap-4"
-        style={{ color: "var(--accent)" }}
-      >
-        01 — About
-        <span className="block h-px w-16" style={{ background: "var(--border)" }} />
-      </motion.p>
+    <section id="about" ref={ref} style={{ background: "var(--navy2)", position: "relative", overflow: "hidden" }}>
+      {/* Center circle — court element */}
+      <svg aria-hidden style={{ position: "absolute", top: "50%", right: "-80px", transform: "translateY(-50%)", opacity: 0.05, pointerEvents: "none" }} width="320" height="320" viewBox="0 0 320 320">
+        <circle cx="160" cy="160" r="130" stroke="white" strokeWidth="2" fill="none"/>
+        <circle cx="160" cy="160" r="50" stroke="white" strokeWidth="1.5" fill="none"/>
+        <line x1="0" y1="160" x2="320" y2="160" stroke="white" strokeWidth="1.5"/>
+      </svg>
+      <div className="section-wrapper">
+        <motion.p {...fade()} className="section-label">01 — About Me</motion.p>
+        <motion.h2 {...fade(0.07)} className="section-title">
+          More than just a <span>dev.</span>
+        </motion.h2>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.55, delay: 0.1 }}
-        className="font-[family-name:var(--font-bebas)] mb-12"
-        style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", letterSpacing: "0.04em" }}
-      >
-        Who I Am
-      </motion.h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="space-y-5"
-        >
-          {[
-            <>
-              I&apos;m a{" "}
-              <strong className="text-[var(--text)] font-medium">
-                Computer Science &amp; Statistics student at UNC Chapel Hill
-              </strong>
-              , expected to graduate in May 2028. I build full-stack applications
-              with a focus on AI integration, data pipelines, and clean,
-              deployable code.
-            </>,
-            <>
-              From engineering backend logic at a tech startup to improving
-              operational performance at scale — I bring{" "}
-              <strong className="text-[var(--text)] font-medium">
-                a builder&apos;s mindset to every problem
-              </strong>
-              , whether it&apos;s a hackathon sprint or a production deployment.
-            </>,
-            <>
-              Active in{" "}
-              <strong className="text-[var(--text)] font-medium">
-                AI @ UNC
-              </strong>
-              , Leaders in Entrepreneurship, UNC Consulting, and Club Flag
-              Football. I also spent six seasons coaching youth soccer — the best
-              engineers are great teammates.
-            </>,
-          ].map((text, i) => (
-            <p
-              key={i}
-              className="text-[0.95rem] leading-[1.85] font-light"
-              style={{ color: "rgba(240,242,255,0.7)" }}
-            >
-              {text}
-            </p>
-          ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-2 gap-4"
-        >
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 12 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.35 + i * 0.07 }}
-              className="group relative p-6 rounded-sm overflow-hidden transition-transform duration-300 hover:-translate-y-1"
-              style={{
-                background: "var(--surface)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              <div
-                className="absolute top-0 left-0 right-0 h-[2px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-                style={{ background: "var(--accent)" }}
-              />
-              <div
-                className="font-[family-name:var(--font-bebas)] text-4xl leading-none mb-2"
-                style={{ color: "var(--accent)" }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="space-y-5">
+            {[
+              `Sophomore at UNC Chapel Hill studying Computer Science and Statistics with a Data Science minor. I build things that work — full-stack apps, AI integrations, clean APIs that ship.`,
+              `Before UNC: valedictorian at Hickory Ridge High School, NC Governor's School for Natural Sciences. Coached a youth soccer team for six consecutive seasons while still in high school — I've always been about leading teams as much as building things.`,
+              `On campus I'm active in AI @ UNC, Leaders in Entrepreneurship, UNC Consulting, and Club Flag Football.`,
+            ].map((text, i) => (
+              <motion.p key={i} {...fade(0.12 + i * 0.06)}
+                className="text-[0.95rem] leading-[1.85] font-light"
+                style={{ color: "rgba(238,242,247,0.68)" }}
               >
-                {s.num}
-              </div>
-              <div
-                className="font-[family-name:var(--font-dm-mono)] text-[0.68rem] uppercase tracking-widest"
-                style={{ color: "var(--muted)" }}
-              >
-                {s.label}
+                {text}
+              </motion.p>
+            ))}
+
+            <motion.div {...fade(0.3)}>
+              <p className="section-label mb-3">On Campus</p>
+              <div className="flex flex-wrap gap-2">
+                {orgs.map((o) => (
+                  <span key={o}
+                    className="text-sm px-3 py-1.5 rounded-lg font-medium"
+                    style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--carolina-light)" }}
+                  >
+                    {o}
+                  </span>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          </div>
+
+          <motion.div {...fade(0.18)} className="grid grid-cols-2 gap-3">
+            {skills.map((g, i) => (
+              <motion.div key={g.title} {...fade(0.2 + i * 0.05)} className="card" style={{ padding: "1.25rem", position: "relative", overflow: "hidden" }}>
+                <svg aria-hidden style={{ position: "absolute", bottom: "-10px", right: "-10px", opacity: 0.07, pointerEvents: "none" }} width="60" height="60" viewBox="0 0 60 60">
+                  <path d="M 50,0 A 42,42 0 0,1 50,60" stroke="white" strokeWidth="1.5" fill="none"/>
+                  <line x1="0" y1="30" x2="44" y2="30" stroke="white" strokeWidth="1"/>
+                </svg>
+                <p className="section-label mb-3">{g.title}</p>
+                <div className="flex flex-col gap-1.5">
+                  {g.items.map((it) => (
+                    <span key={it} className="text-sm" style={{ color: "rgba(238,242,247,0.62)" }}>{it}</span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -3,26 +3,11 @@
 export default function Footer() {
   return (
     <footer
-      className="flex justify-between items-center px-12 py-6"
+      className="flex flex-col sm:flex-row justify-between items-center gap-3 px-10 py-5"
       style={{ borderTop: "1px solid var(--border)" }}
     >
-      <span
-        className="font-[family-name:var(--font-dm-mono)] text-[0.68rem] tracking-wide"
-        style={{ color: "var(--muted)" }}
-      >
-        © 2025 Sean D. Guenthner
-      </span>
-      <span
-        className="font-[family-name:var(--font-bebas)] text-lg tracking-widest"
-        style={{ color: "var(--accent)" }}
-      >
-        SDG
-      </span>
-      <span
-        className="font-[family-name:var(--font-dm-mono)] text-[0.68rem] tracking-wide"
-        style={{ color: "var(--muted)" }}
-      >
-        Built with Next.js · Framer Motion · Three.js
+      <span className="text-xs" style={{ color: "var(--muted)", fontFamily: "var(--font-dm-mono)" }}>
+        © 2026 Sean D. Guenthner
       </span>
     </footer>
   );

@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, DM_Sans, DM_Mono } from "next/font/google";
+import { Archivo, Plus_Jakarta_Sans, DM_Mono, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
-const bebas = Bebas_Neue({
-  weight: "400",
-  variable: "--font-bebas",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
+  weight: ["700", "800", "900"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400"],
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const dmMono = DM_Mono({
@@ -23,12 +29,7 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Sean Guenthner — Full-Stack Developer",
   description:
-    "CS & Statistics student at UNC Chapel Hill. Building AI-powered applications, APIs, and data-driven products.",
-  openGraph: {
-    title: "Sean Guenthner",
-    description: "Full-Stack Developer · UNC Chapel Hill · Class of 2028",
-    type: "website",
-  },
+    "CS & Statistics student at UNC Chapel Hill building AI-powered applications, APIs, and data-driven products.",
 };
 
 export default function RootLayout({
@@ -39,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${dmSans.variable} ${dmMono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${bebas.variable} ${jakarta.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>
