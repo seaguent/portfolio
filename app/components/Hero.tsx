@@ -7,10 +7,7 @@ const InteractiveCourt = dynamic(() => import("./InteractiveCourt"), { ssr: fals
 
 export default function Hero() {
   return (
-    <section
-      className="relative w-full overflow-hidden"
-      style={{ height: "100svh", minHeight: "560px", background: "#C07838", maxWidth: "100vw" }}
-    >
+    <section className="hero-shell">
       <motion.div
         className="absolute inset-0"
         initial={{ opacity: 0, scale: 1.03 }}

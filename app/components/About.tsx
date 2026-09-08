@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const skills = [
-  { title: "Languages", items: ["Python", "JavaScript", "Java", "SQL", "Elixir"] },
-  { title: "Frontend", items: ["React", "Next.js", "Tailwind CSS", "Vite"] },
-  { title: "Backend", items: ["FastAPI", "Node.js", "Pydantic", "REST APIs"] },
-  { title: "Tools", items: ["Git", "GitHub Actions", "Vercel", "Render", "CI/CD"] },
+  { title: "Languages", items: ["Python", "Java", "C", "JavaScript/TypeScript", "SQL"] },
+  { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+  { title: "Backend", items: ["FastAPI", "PostgreSQL", "Redis", "SQLAlchemy", "Alembic"] },
+  { title: "Tools", items: ["Docker", "AWS", "Git", "GitHub Actions", "Locust", "Railway"] },
 ];
 
 const orgs = ["AI @ UNC", "Leaders in Entrepreneurship", "UNC Consulting Club", "Club Flag Football"];
@@ -39,9 +39,8 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-5">
             {[
-              `Sophomore at UNC Chapel Hill studying Computer Science and Statistics with a Data Science minor. I build things that work — full-stack apps, AI integrations, clean APIs that ship.`,
-              `Before UNC: valedictorian at Hickory Ridge High School, NC Governor's School for Natural Sciences. Coached a youth soccer team for six consecutive seasons while still in high school — I've always been about leading teams as much as building things.`,
-              `On campus I'm active in AI @ UNC, Leaders in Entrepreneurship, UNC Consulting, and Club Flag Football.`,
+              `Junior at UNC Chapel Hill studying Computer Science, minoring in Data Science and Statistics.`,
+              `Before UNC: valedictorian at Hickory Ridge High School and NC Governor's School for Natural Sciences.`,
             ].map((text, i) => (
               <motion.p key={i} {...fade(0.12 + i * 0.06)}
                 className="text-[0.95rem] leading-[1.85] font-light"

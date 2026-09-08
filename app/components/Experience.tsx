@@ -5,35 +5,26 @@ import { motion, useInView } from "framer-motion";
 
 const items = [
   {
-    period: "Sep – Dec 2025", role: "Product & Engineering Intern",
-    org: "Bingo Bard", location: "Remote / UNC", tag: "Startup",
-    points: [
-      "Used Elixir with the founding engineering team to test and refine backend logic for social bingo game features.",
-      "Deployed 5–8 themed bingo games to evaluate scalability, UI responsiveness, and student engagement metrics.",
-      "Analyzed gameplay data to surface bottlenecks and drive product roadmap decisions.",
-    ],
-  },
-  {
     period: "May – Aug 2025", role: "Closing Shift Manager",
     org: "Taco Bell", location: "Concord, NC", tag: "Operations",
     points: [
-      "Led a 6–8 person team handling $3K–$5K in nightly sales with 100% cash accuracy.",
-      "Took store from 55/55 to top 15 in the region — cut avg service time from ~5 to ~3 min in 3 months.",
-      "Onboarded 5+ new team members on procedures and customer service standards.",
+      "Directed nightly operations for a 6–8 person team, serving 200+ customers per shift and processing $3K–$5K in nightly sales with 100% cash accuracy.",
+      "Improved store performance from last place (55/55) to top 15 in the region by reducing average service time from ~5 minutes to ~3 minutes within three months.",
     ],
   },
   {
     period: "Mar 2025 – Present", role: "Operations Team Member",
     org: "UNC Campus Recreation", location: "Chapel Hill, NC", tag: "Campus",
     points: [
-      "Officiate 5–7 intramural games per week across multiple sports for up to 30 participants.",
+      "Officiate and supervise 5–7 intramural games per week across multiple sports, ensuring rule compliance, fair play, and a safe environment for 15–30 participants per game.",
+      "Coordinate equipment setup and breakdown between consecutive games, working with staff scheduling to keep multiple simultaneous events running on schedule.",
     ],
   },
   {
     period: "Sep 2021 – May 2024", role: "Volunteer Soccer Coach",
     org: "Harrisburg Parks & Rec", location: "Harrisburg, NC", tag: "Volunteer",
     points: [
-      "Coached 15 players aged 8–12 for six consecutive seasons — two practices and weekend games weekly.",
+      "Coached 15 players aged 8–12 for six consecutive seasons, two practices and weekend games weekly.",
     ],
   },
 ];

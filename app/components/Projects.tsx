@@ -6,12 +6,35 @@ import { motion, useInView } from "framer-motion";
 const projects = [
   {
     num: "01",
+    name: "Beacon",
+    tagline: "Webhook delivery, built like Stripe's.",
+    desc: "An asynchronous webhook delivery platform, the kind infrastructure companies like Stripe use to notify customer systems when an event occurs, built on PostgreSQL and Redis with increasing-backoff retries, database-enforced idempotency, atomic retry claiming across concurrent workers, and a dead-letter queue with manual replay. Load tested with Locust under injected failure conditions, uncovering 4 production-style bugs (3 fixed): throughput went ~35x in the same test (298 to 10,497 requests) while failures dropped ~87% (11.74% to 1.53%), with 99.9% of completed events successfully delivered. Secured with HMAC-SHA256 signing and Redis-backed rate limiting, containerized as a 5-service Docker Compose stack, deployed to AWS EC2, with GitHub Actions CI building images on every push.",
+    stack: ["Python", "FastAPI", "PostgreSQL", "Redis", "SQLAlchemy", "Next.js", "TypeScript", "Docker", "AWS EC2", "Locust", "GitHub Actions"],
+    github: "https://github.com/seaguent/beacon",
+    demo: null,
+    video: null, // e.g. "https://www.youtube.com/embed/VIDEO_ID"
+    type: "Backend · Infrastructure · Distributed Systems",
+  },
+  {
+    num: "02",
+    name: "Gridlytics",
+    tagline: "Fantasy football analytics, right on the league page.",
+    desc: "A dual-platform (Sleeper + ESPN) Chrome extension delivering live fantasy football analytics: standings, power rankings, playoff odds, roster efficiency, and weekly recaps. A 4-tier player-identity resolution pipeline lifts cross-platform match coverage from 31% to 80.9% across 3,045 real players. An in-house opportunity-based player projection model, built on real NFL play-by-play, snap-share, and target-share data (nflverse) and validated via walk-forward backtesting on held-out 2025 season data, beats both platforms' own projections, cutting signed prediction bias 68% (-0.117 to -0.037) and improving elite-player accuracy ~4% (MAE 7.449 to 7.156). Also includes a trade analyzer isolating a trade's true rest-of-season value via optimal-lineup simulation. Zero-drift Alembic migrations, rate limiting, structured error logging, and a 576-test suite; submitted to the Chrome Web Store.",
+    stack: ["TypeScript", "React", "FastAPI", "PostgreSQL", "Alembic", "esbuild", "Railway", "Chrome Extension (MV3)"],
+    github: "https://github.com/seaguent/Gridlytics",
+    demo: null,
+    video: null, // e.g. "https://www.youtube.com/embed/VIDEO_ID"
+    type: "Full Stack · Data · Chrome Extension",
+  },
+  {
+    num: "03",
     name: "AI Meal Estimator",
     tagline: "Snap a photo. Get your macros.",
-    desc: "Full-stack web app that estimates calories and macronutrients from food photos using Google Gemini Vision. FastAPI backend with Pydantic validation, React + Tailwind frontend with drag-and-drop and live camera capture. Fully deployed with automated CI/CD.",
+    desc: "Full-stack web app that estimates calories and macronutrients from food photos using Google Gemini Vision. FastAPI backend with Pydantic validation, React + Tailwind frontend with drag-and-drop and live camera capture. Fully deployed with automated CI/CD. My first full-stack build, and the starter project everything else grew out of.",
     stack: ["Python", "FastAPI", "React", "Tailwind CSS", "Gemini Vision API", "Render", "Vercel", "GitHub Actions"],
     github: "https://github.com/seaguent/ai-meal-estimator",
     demo: null,
+    video: null, // e.g. "https://www.youtube.com/embed/VIDEO_ID"
     type: "Full Stack · AI · Web App",
   },
 ];
@@ -88,6 +111,25 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
+                {p.video ? (
+                  <div className="rounded-lg overflow-hidden mb-6 aspect-video" style={{ border: "1px solid var(--border)" }}>
+                    <iframe
+                      src={p.video}
+                      title={`${p.name} demo video`}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                ) : (
+                  <div className="rounded-lg flex items-center justify-center mb-6 aspect-video"
+                    style={{ border: "1px dashed rgba(75,156,211,0.22)", background: "rgba(75,156,211,0.03)" }}>
+                    <p className="text-xs" style={{ fontFamily: "var(--font-dm-mono)", color: "var(--muted)" }}>
+                      Demo video coming soon
+                    </p>
+                  </div>
+                )}
 
                 <div className="flex gap-3">
                   <a href={p.github} target="_blank" rel="noopener noreferrer"

@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 
 const links = [
   { icon: "✉", label: "Email", value: "seaguent@unc.edu", href: "mailto:seaguent@unc.edu" },
+  { icon: "☎", label: "Phone", value: "(704) 490-7041", href: "tel:+17044907041" },
   { icon: "in", label: "LinkedIn", value: "linkedin.com/in/sean-guenthner", href: "https://linkedin.com/in/sean-guenthner" },
   { icon: "gh", label: "GitHub", value: "github.com/seaguent", href: "https://github.com/seaguent" },
 ];
@@ -39,7 +40,7 @@ export default function Contact() {
           Open to internships, hackathon collabs, and interesting projects. I respond fast.
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {links.map((l, i) => (
             <motion.a key={l.label} {...fade(0.17 + i * 0.07)}
               href={l.href}

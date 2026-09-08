@@ -6,8 +6,9 @@ import { motion, useInView } from "framer-motion";
 const schools = [
   {
     period: "Aug 2024 – May 2028", name: "UNC Chapel Hill",
-    degree: "B.S. Computer Science & Statistics", sub: "Minor in Data Science",
-    badges: ["GPA 3.69", "Dean's List ×3", "AI @ UNC", "Entrepreneurship", "Consulting Club"],
+    degree: "B.S. Computer Science", sub: "Minors in Data Science & Statistics",
+    badges: ["GPA 3.53", "Dean's List ×3"],
+    coursework: "Data Structures, Algorithms & Analysis, Discrete Structures, Foundations of Programming, Systems Fundamentals, Computer Organization, Linear Algebra, Calculus I–III",
     highlight: true,
   },
   {
@@ -65,7 +66,7 @@ export default function Education() {
               <h3 className="font-[family-name:var(--font-archivo)] font-black text-2xl mb-1">{s.name}</h3>
               <p className="text-sm font-medium mb-1" style={{ color: "var(--text)" }}>{s.degree}</p>
               <p className="text-xs font-light mb-5" style={{ color: "var(--muted)" }}>{s.sub}</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {s.badges.map((b) => (
                   <span key={b} className="text-xs px-2.5 py-1 rounded-md"
                     style={{ fontFamily: "var(--font-dm-mono)", color: "var(--carolina)", background: "rgba(75,156,211,0.08)", border: "1px solid rgba(75,156,211,0.18)" }}>
@@ -73,6 +74,12 @@ export default function Education() {
                   </span>
                 ))}
               </div>
+              {s.coursework && (
+                <p className="text-xs font-light leading-relaxed" style={{ color: "var(--muted)" }}>
+                  <span className="section-label" style={{ marginBottom: 0 }}>Relevant Coursework </span>
+                  {s.coursework}
+                </p>
+              )}
             </motion.div>
           ))}
         </div>

@@ -74,3 +74,27 @@ body {
   border-color: rgba(75,156,211,0.3);
   transform: translateY(-2px);
 }
+
+/* Hero fills its container edge-to-edge (no letterboxing) by matching the
+   court SVG's own aspect ratio whenever the viewport is portrait-ish
+   relative to it (phones, and tablets in portrait) — a raw width breakpoint
+   isn't enough here since a portrait tablet and a landscape laptop can share
+   a width but need opposite treatment. Only genuinely landscape viewports
+   (roughly as wide relative to their height as the court itself) get the
+   full-viewport-height cinematic hero, where minor pillarboxing is fine. */
+.hero-shell {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+  background: #C07838;
+  aspect-ratio: 940 / 504;
+}
+
+@media (min-aspect-ratio: 3 / 2) {
+  .hero-shell {
+    height: 100svh;
+    min-height: 560px;
+    aspect-ratio: auto;
+  }
+}

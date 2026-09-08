@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useAnimationControls } from "framer-motion";
 
 /* ─────────────────────────────────────────────────────────────
@@ -63,8 +63,20 @@ const zones = [
 
 export default function InteractiveCourt() {
   const [activeZone, setActiveZone] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const ballControls = useAnimationControls();
   const currentPos = useRef({ x: 470, y: 252 });
+
+  // The SVG scales uniformly with its container (viewBox), so on a narrow
+  // phone-width container everything — including text — shrinks well below
+  // legible size. Bump the affected font sizes back up on small screens.
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    setIsMobile(mq.matches);
+    const fn = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", fn);
+    return () => mq.removeEventListener("change", fn);
+  }, []);
 
   const moveBall = async (zone: (typeof zones)[0]) => {
     const from = { ...currentPos.current };
@@ -245,20 +257,20 @@ export default function InteractiveCourt() {
                   x={zone.labelX} y={zone.labelY - 2}
                   textAnchor="middle"
                   fill={active ? "white" : "rgba(255,255,255,0.95)"}
-                  fontSize="16" fontWeight="900"
+                  fontSize={isMobile ? 34 : 16} fontWeight="900"
                   fontFamily="var(--font-bebas, 'Bebas Neue', Archivo, sans-serif)" letterSpacing="4"
                   filter="url(#textShadow)">
                   {zone.label}
                 </text>
                 <text
-                  x={zone.labelX} y={zone.labelY + 13}
+                  x={zone.labelX} y={zone.labelY + (isMobile ? 22 : 13)}
                   textAnchor="middle"
                   fill={active ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.60)"}
-                  fontSize="10"
+                  fontSize={isMobile ? 22 : 10}
                   fontFamily="var(--font-dm-mono, 'DM Mono', monospace)" letterSpacing="2">
                   {zone.sublabel}
                 </text>
-                {active && (
+                {active && !isMobile && (
                   <text
                     x={zone.labelX} y={zone.labelY + 28}
                     textAnchor="middle"
@@ -274,23 +286,24 @@ export default function InteractiveCourt() {
         })}
 
         {/* Header */}
-        <text x="15" y="42"
+        <text x="15" y={isMobile ? 54 : 42}
           fill="white" fillOpacity="0.95"
-          fontSize="40" fontWeight="900"
+          fontSize={isMobile ? 52 : 40} fontWeight="900"
           fontFamily="var(--font-bebas, 'Bebas Neue', Archivo, sans-serif)" letterSpacing="3"
           filter="url(#nameShadow)">
           Sean Guenthner.
         </text>
-        <text x="18" y="54"
+        <text x="18" y={isMobile ? 70 : 54}
           fill="white" fillOpacity="0.70"
-          fontSize="10.5" fontWeight="700"
+          fontSize={isMobile ? 22 : 10.5} fontWeight="700"
           fontFamily="var(--font-dm-mono, 'DM Mono', monospace)" letterSpacing="3.5"
           filter="url(#nameShadow)">
-          UNC CHAPEL HILL · CS &amp; STATISTICS · &apos;28
+          UNC CHAPEL HILL · COMPUTER SCIENCE · &apos;28
         </text>
 
-        {/* Top-right nav */}
-        {(["ABOUT","PROJECTS","EXPERIENCE","CONTACT"] as const).map((label, i) => {
+        {/* Top-right nav — omitted on mobile: at that scale it's illegible
+            and the zone labels/hit-areas already provide the same navigation. */}
+        {!isMobile && (["ABOUT","PROJECTS","EXPERIENCE","CONTACT"] as const).map((label, i) => {
           const hrefs: Record<string, string> = {
             ABOUT: "#about", PROJECTS: "#projects",
             EXPERIENCE: "#experience", CONTACT: "#contact",

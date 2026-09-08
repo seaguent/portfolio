@@ -29,7 +29,7 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Sean Guenthner — Full-Stack Developer",
   description:
-    "CS & Statistics student at UNC Chapel Hill building AI-powered applications, APIs, and data-driven products.",
+    "Computer Science student at UNC Chapel Hill building AI-powered applications, APIs, and data-driven products.",
 };
 
 export default function RootLayout({
